@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RotinaFacil">
         <activity
+            android:name=".view.activity.ConfiguracoesActivity"
+            android:parentActivityName=".view.activity.MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.activity.CadastrarUserActivity"
             android:exported="true" />
         <activity

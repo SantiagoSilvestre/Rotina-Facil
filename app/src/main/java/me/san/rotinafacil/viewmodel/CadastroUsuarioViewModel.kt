@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import me.san.rotinafacil.config.ConfiguracaoFirebase
 import me.san.rotinafacil.listener.ValidationListener
 import me.san.rotinafacil.model.UsuarioModel
+import me.san.rotinafacil.ui.Base64Custom
 
 class CadastroUsuarioViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -27,9 +28,19 @@ class CadastroUsuarioViewModel(application: Application) : AndroidViewModel(appl
             usuario.email, usuario.senha
         ).addOnCompleteListener {
             if (it.isSuccessful) {
+
+                try {
+                    val identificacaoUsuario = Base64Custom.codificarBase64(usuario.email)
+                    usuario.uid = identificacaoUsuario
+                    usuario.salvar()
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+
                 mUsuarioListener.value = ValidationListener()
             } else {
-                var msg = ""
+                val msg: String
                 try {
                     throw it.exception!!
                 } catch (e: FirebaseAuthWeakPasswordException) {

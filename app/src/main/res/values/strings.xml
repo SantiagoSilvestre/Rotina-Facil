@@ -15,4 +15,7 @@
     <string name="sair">Sair</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nome_usuario">Nome do usuário</string>
+    <string name="msg_alerta">Esse nome não é o de seu usuário nem sua senha. Esse nome ficará visivel para seus contatos!</string>
+    <string name="editar_nome_usuario">Editar nome de usuário</string>
 </resources>

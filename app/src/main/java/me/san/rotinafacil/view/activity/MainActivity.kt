@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 mViewModel.deslogar()
             }
             R.id.menu_configuracoes -> {
-
+                abrirConfiguracoes()
             }
             R.id.menu_pesquisa -> {
 
@@ -76,6 +76,11 @@ class MainActivity : AppCompatActivity() {
                 ToastHelper.exibirToast(this, it.failure())
             }
         })
+    }
+
+    private fun abrirConfiguracoes() {
+        val intent = Intent(this, ConfiguracoesActivity::class.java)
+        startActivity(intent)
     }
 
 }
