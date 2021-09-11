@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "990138405058",
+    "project_id": "rotinafacil-d2509",
+    "storage_bucket": "rotinafacil-d2509.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990138405058:android:39b28b94370e2fe6aeab5b",
+        "android_client_info": {
+          "package_name": "me.san.rotinafacil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "990138405058-jt6fkg1bd3ec0i3n1h8r1dces2lb3091.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.san.rotinafacil",
+            "certificate_hash": "b00d473a6d24018920b814f97b42873e0f0502f1"
+          }
+        },
+        {
+          "client_id": "990138405058-ullnarrkqr20ufc8b95o2cgao7m48a5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDO6d0mAcTqbf-Pvln4jdVyzZ3e5m4ezrM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "990138405058-ullnarrkqr20ufc8b95o2cgao7m48a5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

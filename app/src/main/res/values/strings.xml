@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RotinaFacil</string>
+    <string name="text_email">E-mail</string>
+    <string name="text_senha">Senha</string>
+    <string name="text_entrar">Entrar</string>
+    <string name="text_cadastrese">Não tem conta? Cadastre-se</string>
+    <string name="logo_do_app">Logo do App</string>
+    <string name="imagem_novo_usuario">Imagem novo usuario</string>
+    <string name="text_cadastrar">Cadastrar</string>
+    <string name="ja_tem_conta">Já tem conta? Entrar</string>
+    <string name="nome">Nome</string>
+    <string name="campo_invalido">Campo não preenchido!</string>
+</resources>
