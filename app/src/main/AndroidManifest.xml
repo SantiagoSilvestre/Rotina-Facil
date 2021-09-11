@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RotinaFacil">
         <activity
-            android:name=".view.CadastrarUserActivity"
+            android:name=".view.activity.CadastrarUserActivity"
             android:exported="true" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".view.LoginActivity"
+            android:name=".view.activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

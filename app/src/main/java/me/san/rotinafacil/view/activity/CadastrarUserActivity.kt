@@ -1,4 +1,4 @@
-package me.san.rotinafacil.view
+package me.san.rotinafacil.view.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
