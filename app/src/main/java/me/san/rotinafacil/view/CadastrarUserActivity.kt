@@ -7,13 +7,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import me.san.rotinafacil.model.UsuarioModel
 import me.san.rotinafacil.databinding.ActivityCadastrarUserBinding
+import me.san.rotinafacil.ui.ToastHelper
 import me.san.rotinafacil.ui.ValidateFilds
 import me.san.rotinafacil.viewmodel.CadastroUsuarioViewModel
 
 class CadastrarUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCadastrarUserBinding
     private lateinit var mFormViewModel: CadastroUsuarioViewModel
-    private var mAutenticado = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +31,15 @@ class CadastrarUserActivity : AppCompatActivity() {
     }
 
     private fun observe() {
-        mFormViewModel.autenticado.observe(this, {
-            mAutenticado = it
+        mFormViewModel.usuarioListener.observe(this, {
+            if (it.success()) {
+                ToastHelper.exibirToast(this, "Usuário cadastrado com sucesso!")
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            } else {
+                val message = it.failure()
+                ToastHelper.exibirToast(this, message)
+            }
         })
     }
 
@@ -53,6 +60,7 @@ class CadastrarUserActivity : AppCompatActivity() {
                 this.email = binding.editEmail.text.toString()
                 this.senha = binding.editSenha.text.toString()
             }
+            mFormViewModel.cadastrar(usuario)
         }
     }
 
