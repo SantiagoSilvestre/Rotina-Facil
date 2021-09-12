@@ -9,7 +9,7 @@ import me.san.rotinafacil.model.UsuarioModel
 import me.san.rotinafacil.databinding.ActivityCadastrarUserBinding
 import me.san.rotinafacil.ui.ToastHelper
 import me.san.rotinafacil.ui.ValidateFilds
-import me.san.rotinafacil.viewmodel.CadastroUsuarioViewModel
+import me.san.rotinafacil.viewmodel.activity.CadastroUsuarioViewModel
 
 class CadastrarUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCadastrarUserBinding

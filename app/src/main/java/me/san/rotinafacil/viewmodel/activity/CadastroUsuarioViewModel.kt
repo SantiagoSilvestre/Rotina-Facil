@@ -1,4 +1,4 @@
-package me.san.rotinafacil.viewmodel
+package me.san.rotinafacil.viewmodel.activity
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -12,6 +12,7 @@ import me.san.rotinafacil.config.ConfiguracaoFirebase
 import me.san.rotinafacil.listener.ValidationListener
 import me.san.rotinafacil.model.UsuarioModel
 import me.san.rotinafacil.ui.Base64Custom
+import me.san.rotinafacil.ui.UsuarioFirebase
 
 class CadastroUsuarioViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -28,7 +29,7 @@ class CadastroUsuarioViewModel(application: Application) : AndroidViewModel(appl
             usuario.email, usuario.senha
         ).addOnCompleteListener {
             if (it.isSuccessful) {
-
+                UsuarioFirebase.atualizarNomeUsuario(usuario.nome)
                 try {
                     val identificacaoUsuario = Base64Custom.codificarBase64(usuario.email)
                     usuario.uid = identificacaoUsuario

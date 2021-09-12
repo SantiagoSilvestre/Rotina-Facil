@@ -13,7 +13,7 @@ import me.san.rotinafacil.databinding.ActivityMainBinding
 import me.san.rotinafacil.ui.ToastHelper
 import me.san.rotinafacil.view.fragment.ContatoFragment
 import me.san.rotinafacil.view.fragment.ConversaFragment
-import me.san.rotinafacil.viewmodel.MainViewModel
+import me.san.rotinafacil.viewmodel.activity.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

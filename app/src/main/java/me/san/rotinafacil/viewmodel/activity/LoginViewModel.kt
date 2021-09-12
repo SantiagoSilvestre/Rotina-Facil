@@ -1,4 +1,4 @@
-package me.san.rotinafacil.viewmodel
+package me.san.rotinafacil.viewmodel.activity
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
