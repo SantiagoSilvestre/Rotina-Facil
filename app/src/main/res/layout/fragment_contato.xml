@@ -5,13 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".view.fragment.ContatoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/text_contato"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_contatos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:text="Contatos" />
+        android:scrollbars="vertical" />
+
 
 </FrameLayout>
