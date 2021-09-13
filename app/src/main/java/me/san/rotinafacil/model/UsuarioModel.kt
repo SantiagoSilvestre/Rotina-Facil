@@ -2,11 +2,11 @@ package me.san.rotinafacil.model
 
 import com.google.firebase.database.Exclude
 import me.san.rotinafacil.config.ConfiguracaoFirebase
-import me.san.rotinafacil.ui.UsuarioFirebase
-import java.util.*
+import me.san.rotinafacil.config.UsuarioFirebase
+import java.io.Serializable
 import kotlin.collections.HashMap
 
-class UsuarioModel {
+class UsuarioModel: Serializable {
 
     var uid = ""
 

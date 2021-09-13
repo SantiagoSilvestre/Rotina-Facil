@@ -4,11 +4,10 @@
 
     <uses-feature
         android:name="android.hardware.camera2"
-        android:required="true"
-        />
+        android:required="true" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
 
     <application
         android:allowBackup="true"
@@ -18,9 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RotinaFacil">
         <activity
-            android:name=".view.activity.ConfiguracoesActivity"
+            android:name=".view.activity.ChatActivity"
+            android:exported="true"
+            android:label="@string/title_activity_chat"
             android:parentActivityName=".view.activity.MainActivity"
-            android:exported="true" />
+            android:theme="@style/Theme.RotinaFacil.NoActionBar" />
+        <activity
+            android:name=".view.activity.ConfiguracoesActivity"
+            android:exported="true"
+            android:parentActivityName=".view.activity.MainActivity" />
         <activity
             android:name=".view.activity.CadastrarUserActivity"
             android:exported="true" />

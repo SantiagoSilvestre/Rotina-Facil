@@ -4,26 +4,30 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 import me.san.rotinafacil.R
+import me.san.rotinafacil.listener.RecyclerViewListener
 import me.san.rotinafacil.model.UsuarioModel
 
 class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.MyViewHolder>() {
 
     private var mList: List<UsuarioModel> = arrayListOf()
+    private lateinit var mListener: RecyclerViewListener<UsuarioModel>
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View, val listener: RecyclerViewListener<UsuarioModel>) : RecyclerView.ViewHolder(itemView) {
         val foto = itemView.findViewById<CircleImageView>(R.id.circle_img_contato)
         val textName = itemView.findViewById<TextView>(R.id.text_nome_contato)
         val textEmail = itemView.findViewById<TextView>(R.id.text_email_contato)
+        val layoutItem = itemView.findViewById<LinearLayout>(R.id.layout_item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemLista = LayoutInflater.from(parent.context).inflate(R.layout.adapter_contatos, parent, false)
-        return MyViewHolder(itemLista)
+        return MyViewHolder(itemLista, mListener)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -36,10 +40,17 @@ class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.MyViewHolder>() {
         } else {
             holder.foto.setImageResource(R.drawable.padrao)
         }
+        holder.layoutItem.setOnClickListener {
+           holder.listener.onItemClick(usuario)
+        }
     }
 
     override fun getItemCount(): Int {
         return mList.size
+    }
+
+    fun attachListener(listener: RecyclerViewListener<UsuarioModel>) {
+        mListener = listener
     }
 
     fun updateList (list: List<UsuarioModel>){

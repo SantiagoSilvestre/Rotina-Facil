@@ -20,4 +20,16 @@
     <string name="editar_nome_usuario">Editar nome de usuário</string>
     <string name="confirmar">Confirmar</string>
     <string name="title_permissao_nega">Permissões negadas</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="escreva_sua_mensagem">escreva sua mensagem</string>
+    <string name="digite_sua_mensagem">Digite sua mensagem</string>
+    <string name="digite_uma_mensagem">Digite uma mensagem para enviar</string>
 </resources>

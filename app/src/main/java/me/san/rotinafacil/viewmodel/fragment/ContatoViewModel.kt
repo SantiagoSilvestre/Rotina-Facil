@@ -9,12 +9,14 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import me.san.rotinafacil.config.ConfiguracaoFirebase
+import me.san.rotinafacil.config.UsuarioFirebase
 import me.san.rotinafacil.listener.ValidationListener
 import me.san.rotinafacil.model.UsuarioModel
 
 class ContatoViewModel(application: Application) : AndroidViewModel(application) {
 
     val usuarioRef = ConfiguracaoFirebase.getFirebaseDatabase().child("usuarios")
+    val userCurrent = UsuarioFirebase.getUsuarioAtual()
 
     private val mListener = MutableLiveData<ValidationListener>()
     var listener: LiveData<ValidationListener> = mListener
@@ -28,7 +30,9 @@ class ContatoViewModel(application: Application) : AndroidViewModel(application)
             for (dados in dataSnapshot.children) {
                 val usuario = dados.getValue(UsuarioModel::class.java)
                 if (usuario != null) {
-                    listaContatos.add(usuario)
+                    if (!userCurrent.email.equals(usuario.email)) {
+                        listaContatos.add(usuario)
+                    }
                 }
             }
             mList.value = listaContatos

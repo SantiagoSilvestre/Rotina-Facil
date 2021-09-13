@@ -3,13 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bg_balao.xml" value="0.209375" />
+        <entry key="app/src/main/res/drawable/fundo_mensagem_chat.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/ic_edit_green.xml" value="0.10520833333333333" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.20615384615384616" />
+        <entry key="app/src/main/res/drawable/ic_send.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/activity_cadastrar_user.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_configuracoes.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12182971014492754" />
-        <entry key="app/src/main/res/layout/adapter_contatos.xml" value="0.44543429844098" />
+        <entry key="app/src/main/res/layout/adapter_contatos.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/adapter_mensagem_destinatario.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/adapter_mensagem_remetente.xml" value="0.12" />
+        <entry key="app/src/main/res/layout/content_chat.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/divider.xml" value="0.11775362318840579" />
         <entry key="app/src/main/res/layout/fragment_contato.xml" value="0.178125" />
         <entry key="app/src/main/res/layout/fragment_conversa.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.19322916666666667" />

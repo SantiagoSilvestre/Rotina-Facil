@@ -1,40 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<LinearLayout
+    android:id="@+id/layout_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:padding="5dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
     android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circle_img_contato"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/padrao" />
-
     <LinearLayout
-        android:id="@+id/linear_texts"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical"
-        android:padding="5dp"
+        android:layout_marginBottom="6dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text_nome_contato"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circle_img_contato"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/padrao" />
+
+        <LinearLayout
+            android:id="@+id/linear_texts"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:padding="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:text="@string/nome"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/text_email_contato"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:text="@string/text_email"
-            android:textStyle="bold"/>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/text_nome_contato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="@string/nome"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/text_email_contato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="@string/text_email"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
     </LinearLayout>
+
+<include layout="@layout/divider"/>
 
 </LinearLayout>
