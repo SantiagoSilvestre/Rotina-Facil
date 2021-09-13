@@ -11,10 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import me.san.rotinafacil.R
 import me.san.rotinafacil.databinding.ActivityConfiguracoesBinding
-import me.san.rotinafacil.ui.Constants
-import me.san.rotinafacil.ui.Constants.CODES.PERMISSION_CODE
-import me.san.rotinafacil.ui.Permissao
-import me.san.rotinafacil.ui.ToastHelper
+import me.san.rotinafacil.helper.Constants
+import me.san.rotinafacil.helper.Constants.CODES.PERMISSION_CODE
+import me.san.rotinafacil.helper.Permissao
+import me.san.rotinafacil.helper.ToastHelper
 import me.san.rotinafacil.viewmodel.activity.ConfiguracoesViewModel
 
 class ConfiguracoesActivity : AppCompatActivity() {

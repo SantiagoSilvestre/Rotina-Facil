@@ -5,19 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import de.hdodenhof.circleimageview.CircleImageView
 import me.san.rotinafacil.R
-import me.san.rotinafacil.config.ConfiguracaoFirebase
 import me.san.rotinafacil.config.UsuarioFirebase
 import me.san.rotinafacil.listener.RecyclerViewListener
 import me.san.rotinafacil.model.MensagemModel
-import me.san.rotinafacil.model.UsuarioModel
-import me.san.rotinafacil.ui.Constants
-import org.w3c.dom.Text
+import me.san.rotinafacil.helper.Constants
 
 class MensagemAdapter: RecyclerView.Adapter<MensagemAdapter.MyViewHolder>() {
 

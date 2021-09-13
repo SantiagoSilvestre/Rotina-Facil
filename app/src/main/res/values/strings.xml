@@ -33,4 +33,18 @@
     <string name="digite_sua_mensagem">Digite sua mensagem</string>
     <string name="digite_uma_mensagem">Digite uma mensagem para enviar</string>
     <string name="ultima_mensagam">Última mensagam</string>
+    <string name="rotina">Rotina Fácil</string>
+    <string name="tarefa">Tarefa</string>
+
+    <string name="label_created_task">Criar Tarefa</string>
+    <string name="label_task">Título</string>
+    <string name="label_desc">Descrição</string>
+    <string name="label_data">Data</string>
+    <string name="label_hour">Hora</string>
+    <string name="label_cancel">Cancelar</string>
+    <string name="label_tasks">Tarefas</string>
+    <string name="description_new_task">Nova Tarefa</string>
+    <string name="label_edit">Editar</string>
+    <string name="label_delete">Deletar</string>
+    <string name="label_dont_have_tasks">Ops! Você não possui \n nenhuma tarefa</string>
 </resources>

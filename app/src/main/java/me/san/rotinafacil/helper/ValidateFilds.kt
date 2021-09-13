@@ -1,4 +1,4 @@
-package me.san.rotinafacil.ui
+package me.san.rotinafacil.helper
 
 import android.content.Context
 import com.google.android.material.textfield.TextInputEditText

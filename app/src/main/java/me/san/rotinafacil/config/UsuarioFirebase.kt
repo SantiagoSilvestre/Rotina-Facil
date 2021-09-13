@@ -5,7 +5,7 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import me.san.rotinafacil.model.UsuarioModel
-import me.san.rotinafacil.ui.Base64Custom
+import me.san.rotinafacil.helper.Base64Custom
 
 class UsuarioFirebase {
     companion object {

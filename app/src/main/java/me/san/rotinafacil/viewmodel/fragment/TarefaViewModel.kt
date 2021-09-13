@@ -10,35 +10,31 @@ import com.google.firebase.database.ValueEventListener
 import me.san.rotinafacil.config.ConfiguracaoFirebase
 import me.san.rotinafacil.config.UsuarioFirebase
 import me.san.rotinafacil.listener.ValidationListener
-import me.san.rotinafacil.model.ConversaModel
+import me.san.rotinafacil.model.TaskModel
 
-class ConversaViewModel(application: Application) : AndroidViewModel(application) {
+class TarefaViewModel(application: Application) : AndroidViewModel(application) {
 
-
-    val userCurrent = UsuarioFirebase.getUsuarioAtual()
     val identificador = UsuarioFirebase.getIdentificadorUsuario()
-    val conversaRef = ConfiguracaoFirebase.getFirebaseDatabase()
-        .child("conversas")
+    val taskRef = ConfiguracaoFirebase.getFirebaseDatabase()
+        .child("tasks")
         .child(identificador)
 
     private val mListener = MutableLiveData<ValidationListener>()
     var listener: LiveData<ValidationListener> = mListener
-    var listaConversas = arrayListOf<ConversaModel>()
+    var listaTasks = arrayListOf<TaskModel>()
 
-    private val mList = MutableLiveData<List<ConversaModel>>()
-    var list: LiveData<List<ConversaModel>> = mList
+    private val mList = MutableLiveData<List<TaskModel>>()
+    var list: LiveData<List<TaskModel>> = mList
 
     val postListener = object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
             for (dados in dataSnapshot.children) {
-                val conv = dados.getValue(ConversaModel::class.java)
-                if (conv != null) {
-                    if (!userCurrent.email.equals(conv.usuarioExibicao?.email)) {
-                        listaConversas.add(conv)
-                    }
+                val task = dados.getValue(TaskModel::class.java)
+                if (task != null) {
+                    listaTasks.add(task)
                 }
             }
-            mList.value = listaConversas
+            mList.value = listaTasks
         }
 
         override fun onCancelled(databaseError: DatabaseError) {
@@ -47,14 +43,14 @@ class ConversaViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun getList() {
-        conversaRef.removeEventListener(postListener)
-        listaConversas = arrayListOf()
-        conversaRef.addValueEventListener( postListener)
+        taskRef.removeEventListener(postListener)
+        listaTasks = arrayListOf()
+        taskRef.addValueEventListener(postListener)
     }
 
     fun removeEvent() {
-        conversaRef.removeEventListener(postListener)
-        mList.value = listaConversas
+        taskRef.removeEventListener(postListener)
+        mList.value = listaTasks
     }
 
 }
