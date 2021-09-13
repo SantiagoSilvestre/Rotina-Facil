@@ -69,8 +69,6 @@ class ContatoFragment : Fragment() {
     }
 
     private fun listeners() {
-
-
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvContatos.layoutManager = layoutManager
         binding.rvContatos.setHasFixedSize(true)

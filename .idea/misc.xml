@@ -14,6 +14,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12182971014492754" />
         <entry key="app/src/main/res/layout/adapter_contatos.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/adapter_conversa.xml" value="0.18" />
         <entry key="app/src/main/res/layout/adapter_mensagem_destinatario.xml" value="0.22" />
         <entry key="app/src/main/res/layout/adapter_mensagem_remetente.xml" value="0.12" />
         <entry key="app/src/main/res/layout/content_chat.xml" value="0.33" />

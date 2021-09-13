@@ -11,17 +11,18 @@ import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 import me.san.rotinafacil.R
 import me.san.rotinafacil.listener.RecyclerViewListener
+import me.san.rotinafacil.model.ConversaModel
 import me.san.rotinafacil.model.UsuarioModel
 
-class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.MyViewHolder>() {
+class ConversasAdapter: RecyclerView.Adapter<ConversasAdapter.MyViewHolder>() {
 
-    private var mList: List<UsuarioModel> = arrayListOf()
-    private lateinit var mListener: RecyclerViewListener<UsuarioModel>
+    private var mList: List<ConversaModel> = arrayListOf()
+    private lateinit var mListener: RecyclerViewListener<ConversaModel>
 
-    inner class MyViewHolder(itemView: View, val listener: RecyclerViewListener<UsuarioModel>) : RecyclerView.ViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View, val listener: RecyclerViewListener<ConversaModel>) : RecyclerView.ViewHolder(itemView) {
         val foto = itemView.findViewById<CircleImageView>(R.id.circle_img)
         val textName = itemView.findViewById<TextView>(R.id.text_title)
-        val textEmail = itemView.findViewById<TextView>(R.id.text_subtitulo)
+        val textUltimaMensagem = itemView.findViewById<TextView>(R.id.text_subtitulo)
         val layoutItem = itemView.findViewById<LinearLayout>(R.id.layout_item)
     }
 
@@ -31,17 +32,17 @@ class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val usuario = mList[position]
-        holder.textName.text = usuario.nome
-        holder.textEmail.text = usuario.email
-        if (usuario.foto != "") {
-            val uri = Uri.parse(usuario.foto)
+        val conversa = mList[position]
+        holder.textName.text = conversa.usuarioExibicao?.nome
+        holder.textUltimaMensagem.text = conversa.ultimaMensagem
+        if (conversa.usuarioExibicao?.foto != "") {
+            val uri = Uri.parse(conversa.usuarioExibicao?.foto)
             Glide.with(holder.itemView.context).load(uri).into(holder.foto)
         } else {
             holder.foto.setImageResource(R.drawable.padrao)
         }
         holder.layoutItem.setOnClickListener {
-           holder.listener.onItemClick(usuario)
+           holder.listener.onItemClick(conversa)
         }
     }
 
@@ -49,11 +50,11 @@ class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.MyViewHolder>() {
         return mList.size
     }
 
-    fun attachListener(listener: RecyclerViewListener<UsuarioModel>) {
+    fun attachListener(listener: RecyclerViewListener<ConversaModel>) {
         mListener = listener
     }
 
-    fun updateList (list: List<UsuarioModel>){
+    fun updateList (list: List<ConversaModel>){
         mList = list
         notifyDataSetChanged()
     }

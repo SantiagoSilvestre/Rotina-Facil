@@ -5,12 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".view.fragment.ConversaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_conversas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:textSize="30sp"
-        android:text="Conversa" />
+        android:scrollbars="vertical" />
 
 </FrameLayout>

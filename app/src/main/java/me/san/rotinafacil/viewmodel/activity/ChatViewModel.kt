@@ -12,6 +12,7 @@ import me.san.rotinafacil.listener.ValidationListener
 import me.san.rotinafacil.model.UsuarioModel
 import me.san.rotinafacil.ui.Base64Custom
 import me.san.rotinafacil.config.UsuarioFirebase
+import me.san.rotinafacil.model.ConversaModel
 import me.san.rotinafacil.model.MensagemModel
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -70,10 +71,8 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
                 this.mensagem = msg
                 this.uidUsuario = uidUsuarioRemetente
             }
-            //Salvar para o remetente
             salvarMensagem(uidUsuarioRemetente, usuarioDestinatario, mensagem)
-            //Salvar para o destinatario
-            salvarMensagem(usuarioDestinatario, uidUsuarioRemetente, mensagem)
+            salvarConversa(mensagem, usuarioDestinatario, usuario)
         } else {
             mUsuarioListener.value =
                 ValidationListener(context.getString(R.string.digite_uma_mensagem))
@@ -87,7 +86,22 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
             .child(destinatario)
             .push()
             .setValue(mensagem)
+
+        mensagemRef.child(destinatario)
+            .child(remetente)
+            .push()
+            .setValue(mensagem)
         mUsuarioListener.value = ValidationListener()
+    }
+
+    fun salvarConversa(mensagem: MensagemModel, destinatario: String, usuario: UsuarioModel) {
+        val conversaRemetente = ConversaModel().apply {
+            this.uidRemetente = uidUsuarioRemetente
+            this.uidDestinatario = destinatario
+            this.ultimaMensagem = mensagem.mensagem
+            this.usuarioExibicao = usuario
+        }
+        conversaRemetente.salvar()
     }
 
     fun getList(usuario: UsuarioModel) {
