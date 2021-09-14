@@ -47,4 +47,8 @@
     <string name="label_edit">Editar</string>
     <string name="label_delete">Deletar</string>
     <string name="label_dont_have_tasks">Ops! Você não possui \n nenhuma tarefa</string>
+    <string name="passadas">Passadas</string>
+    <string name="hoje">Hoje</string>
+    <string name="new_task">Botão nova tarefa</string>
+    <string name="data">Data</string>
 </resources>

@@ -1,5 +1,6 @@
 package me.san.rotinafacil.view.fragment
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import com.google.android.gms.tasks.Task
 import me.san.rotinafacil.R
 import me.san.rotinafacil.databinding.FragmentConversaBinding
 import me.san.rotinafacil.databinding.FragmentTarefasBinding
+import me.san.rotinafacil.helper.Constants
 import me.san.rotinafacil.listener.RecyclerViewListener
 import me.san.rotinafacil.model.ConversaModel
 import me.san.rotinafacil.model.TaskModel
@@ -21,6 +23,7 @@ import me.san.rotinafacil.view.adapter.ConversasAdapter
 import me.san.rotinafacil.view.adapter.TarefasAdapter
 import me.san.rotinafacil.viewmodel.fragment.ConversaViewModel
 import me.san.rotinafacil.viewmodel.fragment.TarefaViewModel
+import java.util.*
 
 
 class TarefasFragment : Fragment() {
@@ -84,6 +87,28 @@ class TarefasFragment : Fragment() {
             val intent = Intent(requireActivity(), TaskFormActivity::class.java)
             startActivity(intent)
         }
+
+        val newDate = Calendar.getInstance()
+        binding.textData.text = Constants.LOCALE.DATE_FORMATE.format(newDate.time)
+
+        binding.btnCandario.setOnClickListener {
+            val newCalendar = Calendar.getInstance()
+            var datePicker: DatePickerDialog?
+            datePicker = DatePickerDialog(
+                requireActivity(),
+                { view, year, monthOfYear, dayOfMonth ->
+                    val newDate = Calendar.getInstance()
+                    newDate[year, monthOfYear] = dayOfMonth
+                    binding.textData.text = Constants.LOCALE.DATE_FORMATE.format(newDate.time)
+                },
+                newCalendar[Calendar.YEAR],
+                newCalendar[Calendar.MONTH],
+                newCalendar[Calendar.DAY_OF_MONTH],
+            )
+
+            datePicker.show()
+        }
+
     }
 
     private fun observe() {

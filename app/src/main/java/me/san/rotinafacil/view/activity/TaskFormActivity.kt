@@ -64,21 +64,6 @@ class TaskFormActivity : AppCompatActivity() {
                 )
 
             datePicker.show()
-
-            //val datePicker = MaterialDatePicker.Builder.datePicker().build()
-
-
-
-
-            /*
-            datePicker.addOnPositiveButtonClickListener {
-                val timeZone = TimeZone.getDefault()
-                val offset = timeZone.getOffset(Date().time) * -1
-                binding.tilDate.text = Date(it + offset).format()
-            }
-            datePicker.show(supportFragmentManager, "DATE_PICKER_TAG")
-
-             */
         }
         binding.tilHour.editText?.setOnClickListener {
             val timePicker = MaterialTimePicker
