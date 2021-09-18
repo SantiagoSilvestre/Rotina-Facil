@@ -51,7 +51,7 @@ class TarefasFragment : Fragment() {
             }
 
             override fun onItemClick(model: TaskModel) {
-                val intent = Intent(requireActivity(), ChatActivity::class.java)
+                val intent = Intent(requireActivity(), TaskFormActivity::class.java)
                 intent.putExtra("task", model)
                 startActivity(intent)
             }

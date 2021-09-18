@@ -31,5 +31,10 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         mListener.value = ValidationListener()
     }
 
+    fun update(task: TaskModel) {
+        task.atualizar()
+        mListener.value = ValidationListener()
+    }
+
 }
 

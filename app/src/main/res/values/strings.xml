@@ -51,4 +51,5 @@
     <string name="hoje">Hoje</string>
     <string name="new_task">Botão nova tarefa</string>
     <string name="data">Data</string>
+    <string name="save_task">Salvar Tarefa</string>
 </resources>
