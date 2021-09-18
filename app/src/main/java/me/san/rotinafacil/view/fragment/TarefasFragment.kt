@@ -11,9 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.tasks.Task
 import me.san.rotinafacil.R
+import me.san.rotinafacil.config.ConfiguracaoFirebase
+import me.san.rotinafacil.config.UsuarioFirebase
 import me.san.rotinafacil.databinding.FragmentConversaBinding
 import me.san.rotinafacil.databinding.FragmentTarefasBinding
 import me.san.rotinafacil.helper.Constants
+import me.san.rotinafacil.helper.TratarDatas
 import me.san.rotinafacil.listener.RecyclerViewListener
 import me.san.rotinafacil.model.ConversaModel
 import me.san.rotinafacil.model.TaskModel
@@ -32,6 +35,8 @@ class TarefasFragment : Fragment() {
     private val mAdapter = TarefasAdapter()
     private lateinit var mFormViewModel: TarefaViewModel
     private lateinit var mListener: RecyclerViewListener<TaskModel>
+    val identificador = UsuarioFirebase.getIdentificadorUsuario()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,17 +69,29 @@ class TarefasFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         mAdapter.attachListener(mListener)
-        mFormViewModel.getList()
+        var taskRef = ConfiguracaoFirebase.getFirebaseDatabase()
+            .child("tasks")
+            .child(identificador)
+            .child(TratarDatas.dataParaFirebase(binding.textData.text.toString()))
+        mFormViewModel.getList(taskRef)
     }
 
     override fun onPause() {
         super.onPause()
-        mFormViewModel.removeEvent()
+        var taskRef = ConfiguracaoFirebase.getFirebaseDatabase()
+            .child("tasks")
+            .child(identificador)
+            .child(TratarDatas.dataParaFirebase(binding.textData.text.toString()))
+        mFormViewModel.removeEvent(taskRef)
     }
 
     override fun onStop() {
         super.onStop()
-        mFormViewModel.removeEvent()
+        var taskRef = ConfiguracaoFirebase.getFirebaseDatabase()
+            .child("tasks")
+            .child(identificador)
+            .child(TratarDatas.dataParaFirebase(binding.textData.text.toString()))
+        mFormViewModel.removeEvent(taskRef)
     }
 
     private fun listeners() {
@@ -100,6 +117,11 @@ class TarefasFragment : Fragment() {
                     val newDate = Calendar.getInstance()
                     newDate[year, monthOfYear] = dayOfMonth
                     binding.textData.text = Constants.LOCALE.DATE_FORMATE.format(newDate.time)
+                    var taskRef = ConfiguracaoFirebase.getFirebaseDatabase()
+                        .child("tasks")
+                        .child(identificador)
+                        .child(TratarDatas.dataParaFirebase(binding.textData.text.toString()))
+                    mFormViewModel.getList(taskRef)
                 },
                 newCalendar[Calendar.YEAR],
                 newCalendar[Calendar.MONTH],

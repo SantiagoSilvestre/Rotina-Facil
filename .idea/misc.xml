@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_balao.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/fundo_mensagem_chat.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/ic_calendar.xml" value="0.209375" />

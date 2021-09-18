@@ -6,18 +6,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import me.san.rotinafacil.config.ConfiguracaoFirebase
 import me.san.rotinafacil.config.UsuarioFirebase
+import me.san.rotinafacil.helper.TratarDatas
 import me.san.rotinafacil.listener.ValidationListener
 import me.san.rotinafacil.model.TaskModel
 
 class TarefaViewModel(application: Application) : AndroidViewModel(application) {
-
-    val identificador = UsuarioFirebase.getIdentificadorUsuario()
-    val taskRef = ConfiguracaoFirebase.getFirebaseDatabase()
-        .child("tasks")
-        .child(identificador)
 
     private val mListener = MutableLiveData<ValidationListener>()
     var listener: LiveData<ValidationListener> = mListener
@@ -42,13 +39,13 @@ class TarefaViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    fun getList() {
+    fun getList(taskRef: DatabaseReference) {
         taskRef.removeEventListener(postListener)
         listaTasks = arrayListOf()
         taskRef.addValueEventListener(postListener)
     }
 
-    fun removeEvent() {
+    fun removeEvent(taskRef: DatabaseReference) {
         taskRef.removeEventListener(postListener)
         mList.value = listaTasks
     }

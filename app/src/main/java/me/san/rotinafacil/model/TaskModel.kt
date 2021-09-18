@@ -2,6 +2,7 @@ package me.san.rotinafacil.model
 
 import android.text.TextUtils.replace
 import me.san.rotinafacil.config.ConfiguracaoFirebase
+import me.san.rotinafacil.helper.TratarDatas
 import java.io.Serializable
 import java.util.Collections.replaceAll
 
@@ -25,13 +26,11 @@ class TaskModel: Serializable {
 
     fun salvar() {
 
-        val dateArray = this.date.split("/")
-        val dateString = "${dateArray[2]}/${dateArray[1]}/${dateArray[0]}"
 
         val database = ConfiguracaoFirebase.getFirebaseDatabase()
         val tarefasRef = database.child("tasks")
         tarefasRef.child(this.uidUsuario)
-            .child(dateString)
+            .child(TratarDatas.dataParaFirebase(this.date))
             .push()
             .setValue(this)
     }
