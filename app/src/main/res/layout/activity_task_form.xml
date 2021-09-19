@@ -96,6 +96,29 @@
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/check_task"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/completa"
+        android:visibility="gone"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintTop_toBottomOf="@id/til_hour"/>
+
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:numStars="3"
+        android:stepSize="1"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guide_end"
+        app:layout_constraintStart_toStartOf="@+id/guide_start"
+        app:layout_constraintTop_toBottomOf="@+id/check_task" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_cancel"
         android:layout_width="0dp"
@@ -118,5 +141,6 @@
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

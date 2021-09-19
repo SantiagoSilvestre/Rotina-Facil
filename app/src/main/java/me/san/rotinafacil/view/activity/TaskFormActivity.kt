@@ -3,6 +3,7 @@ package me.san.rotinafacil.view.activity
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -22,6 +23,9 @@ class TaskFormActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTaskFormBinding
     private lateinit var mViewModel: TaskViewModel
     private lateinit var mTask: TaskModel
+    private lateinit var mUsuarioModel: UsuarioModel
+    private var pontos = 0
+    private var pontosAretirar = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,10 +59,20 @@ class TaskFormActivity : AppCompatActivity() {
             binding.tilHour.text = mTask.hour
             binding.btnNewTask.text = getString(R.string.save_task)
             binding.tilDate.isEnabled = false
+            binding.checkTask.visibility = View.VISIBLE
+            pontosAretirar = mTask.pontuacao
+        }
+        //fim
+        binding.checkTask.setOnClickListener {
+            if (binding.checkTask.isChecked)
+                binding.ratingBar.visibility = View.VISIBLE
+            else
+                binding.ratingBar.visibility = View.GONE
         }
 
-
-        //fim
+        binding.ratingBar.setOnRatingBarChangeListener { ratingBar, fl, b ->
+            pontos = fl.toInt()
+        }
 
         binding.tilDate.editText?.setOnClickListener {
             val newCalendar = Calendar.getInstance()
@@ -110,6 +124,14 @@ class TaskFormActivity : AppCompatActivity() {
                 ToastHelper.exibirToast(this, it.failure())
             }
         })
+
+        mViewModel.usuarioModel.observe(this, {
+            mUsuarioModel = it
+            mUsuarioModel.pontuacaoTotal -= pontosAretirar
+            mUsuarioModel.pontuacaoTotal += pontos
+            mUsuarioModel.atualizar()
+            mViewModel.removerEvento()
+        })
     }
 
 
@@ -129,6 +151,8 @@ class TaskFormActivity : AppCompatActivity() {
             mTask.date = binding.tilDate.text
             mTask.descricao = binding.tilDescricao.text
             mTask.hour = binding.tilHour.text
+            mTask.completa = binding.checkTask.isChecked
+            mTask.pontuacao = pontos
             mViewModel.update(mTask)
         }
     }

@@ -20,6 +20,8 @@ class UsuarioModel: Serializable {
 
     var email = ""
 
+    var pontuacaoTotal = 0
+
     var senha = ""
         @Exclude
         get() = field
@@ -53,6 +55,7 @@ class UsuarioModel: Serializable {
         usuarioMap.put("email", this.email)
         usuarioMap.put("nome", this.nome)
         usuarioMap.put("foto", this.foto)
+        usuarioMap.put("pontuacaoTotal", this.pontuacaoTotal)
 
         return usuarioMap
     }
