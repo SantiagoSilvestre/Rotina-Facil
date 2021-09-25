@@ -35,14 +35,11 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     val postListener = object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
             mUsuarioModel.value = dataSnapshot.getValue(UsuarioModel::class.java)!!
-            Log.d("PassaPoraquinao?", dataSnapshot.value.toString())
         }
 
         override fun onCancelled(databaseError: DatabaseError) {
         }
     }
-
-
 
     fun save(task: TaskModel) {
         task.pontuacao = 0
@@ -57,10 +54,6 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
             usuariosRef.addListenerForSingleValueEvent(postListener)
         }
         mListener.value = ValidationListener()
-    }
-
-    fun removerEvento() {
-   //     usuariosRef.removeEventListener(postListener)
     }
 
 }

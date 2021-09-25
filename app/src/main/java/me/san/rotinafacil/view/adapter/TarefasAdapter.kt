@@ -22,8 +22,8 @@ class TarefasAdapter: RecyclerView.Adapter<TarefasAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(itemView: View, val listener: RecyclerViewListener<TaskModel>) : RecyclerView.ViewHolder(itemView) {
         val textTitle = itemView.findViewById<TextView>(R.id.text_title)
-        val textData = itemView.findViewById<TextView>(R.id.text_subtitulo)
-        val textHora = itemView.findViewById<TextView>(R.id.text_legenda)
+        val textHora = itemView.findViewById<TextView>(R.id.text_subtitulo)
+        val textCompleta = itemView.findViewById<TextView>(R.id.text_legenda)
         val layoutItem = itemView.findViewById<LinearLayout>(R.id.layout_item)
     }
 
@@ -35,10 +35,14 @@ class TarefasAdapter: RecyclerView.Adapter<TarefasAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val task = mList[position]
         holder.textTitle.text = task.title
-        holder.textData.text = task.date
         holder.textHora.text = task.hour
+        holder.textCompleta.text = if (task.completa) "Finalizado" else "Não finalizado"
         holder.layoutItem.setOnClickListener {
            holder.listener.onItemClick(task)
+        }
+        holder.layoutItem.setOnLongClickListener {
+            holder.listener.onLongItemClick(task)
+            true
         }
     }
 

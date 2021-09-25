@@ -63,5 +63,18 @@ class TaskModel: Serializable {
         return taskMap
     }
 
+    fun remove() {
+        val identificadorUser = UsuarioFirebase.getIdentificadorUsuario()
+        val database = ConfiguracaoFirebase.getFirebaseDatabase()
+
+        val tarefasRef = database.child("tasks")
+            .child(identificadorUser)
+            .child(TratarDatas.dataParaFirebase(this.date))
+            .child(this.timestamp.toString())
+
+
+        tarefasRef.removeValue()
+    }
+
 
 }

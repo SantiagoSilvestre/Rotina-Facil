@@ -60,6 +60,12 @@ class TaskFormActivity : AppCompatActivity() {
             binding.btnNewTask.text = getString(R.string.save_task)
             binding.tilDate.isEnabled = false
             binding.checkTask.visibility = View.VISIBLE
+            if (mTask.completa) {
+                binding.checkTask.isChecked = mTask.completa
+                binding.ratingBar.visibility = View.VISIBLE
+                binding.ratingBar.rating = mTask.pontuacao.toFloat()
+            }
+
             pontosAretirar = mTask.pontuacao
         }
         //fim
@@ -130,7 +136,6 @@ class TaskFormActivity : AppCompatActivity() {
             mUsuarioModel.pontuacaoTotal -= pontosAretirar
             mUsuarioModel.pontuacaoTotal += pontos
             mUsuarioModel.atualizar()
-            mViewModel.removerEvento()
         })
     }
 
