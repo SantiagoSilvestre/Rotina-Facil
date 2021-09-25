@@ -2,15 +2,14 @@ package me.san.rotinafacil.view.fragment
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.content.DialogInterface
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import me.san.rotinafacil.config.ConfiguracaoFirebase
 import me.san.rotinafacil.config.UsuarioFirebase
@@ -20,10 +19,10 @@ import me.san.rotinafacil.helper.ToastHelper
 import me.san.rotinafacil.helper.TratarDatas
 import me.san.rotinafacil.listener.RecyclerViewListener
 import me.san.rotinafacil.model.TaskModel
-import me.san.rotinafacil.model.UsuarioModel
+import me.san.rotinafacil.view.activity.MainActivity
 import me.san.rotinafacil.view.activity.TaskFormActivity
 import me.san.rotinafacil.view.adapter.TarefasAdapter
-import me.san.rotinafacil.viewmodel.fragment.TarefaViewModel
+import me.san.rotinafacil.viewmodel.activity.MainViewModel
 import java.util.*
 
 
@@ -31,7 +30,7 @@ class TarefasFragment : Fragment() {
 
     private lateinit var binding: FragmentTarefasBinding
     private val mAdapter = TarefasAdapter()
-    private lateinit var mFormViewModel: TarefaViewModel
+    private lateinit var mViewModel: MainViewModel
     private lateinit var mListener: RecyclerViewListener<TaskModel>
     val identificador = UsuarioFirebase.getIdentificadorUsuario()
     private lateinit var mTask: TaskModel
@@ -42,7 +41,7 @@ class TarefasFragment : Fragment() {
     ): View {
 
         binding = FragmentTarefasBinding.inflate(layoutInflater)
-        mFormViewModel = ViewModelProvider(this).get(TarefaViewModel::class.java)
+        mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         mListener = object : RecyclerViewListener<TaskModel> {
 
@@ -57,7 +56,7 @@ class TarefasFragment : Fragment() {
                 alertDialog.setTitle("Remover Tarefa")
                 alertDialog.setMessage("Deseja remover a tarefa?")
                 alertDialog.setPositiveButton("Sim") { _, _ ->
-                    mFormViewModel.getUser()
+                    mViewModel.getUser()
                     mTask = model
                 }
                 alertDialog.setNeutralButton("Não") { _, _ ->
@@ -81,7 +80,13 @@ class TarefasFragment : Fragment() {
             .child("tasks")
             .child(identificador)
             .child(TratarDatas.dataParaFirebase(binding.textData.text.toString()))
-        mFormViewModel.getList(taskRef)
+        mViewModel.getList(taskRef)
+        mViewModel.getListContatos()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mViewModel.getListContatos()
     }
 
     override fun onPause() {
@@ -90,7 +95,7 @@ class TarefasFragment : Fragment() {
             .child("tasks")
             .child(identificador)
             .child(TratarDatas.dataParaFirebase(binding.textData.text.toString()))
-        mFormViewModel.removeEvent(taskRef)
+        mViewModel.removeEvent(taskRef)
     }
 
     override fun onStop() {
@@ -99,7 +104,7 @@ class TarefasFragment : Fragment() {
             .child("tasks")
             .child(identificador)
             .child(TratarDatas.dataParaFirebase(binding.textData.text.toString()))
-        mFormViewModel.removeEvent(taskRef)
+        mViewModel.removeEvent(taskRef)
     }
 
     private fun listeners() {
@@ -129,7 +134,7 @@ class TarefasFragment : Fragment() {
                         .child("tasks")
                         .child(identificador)
                         .child(TratarDatas.dataParaFirebase(binding.textData.text.toString()))
-                    mFormViewModel.getList(taskRef)
+                    mViewModel.getList(taskRef)
                 },
                 newCalendar[Calendar.YEAR],
                 newCalendar[Calendar.MONTH],
@@ -142,24 +147,28 @@ class TarefasFragment : Fragment() {
     }
 
     private fun observe() {
-        mFormViewModel.list.observe(viewLifecycleOwner, {
+        mViewModel.list.observe(viewLifecycleOwner, {
             mAdapter.updateList(it)
         })
 
-        mFormViewModel.usuarioModel.observe(viewLifecycleOwner, {
+        mViewModel.usuarioModel.observe(viewLifecycleOwner, {
             it.pontuacaoTotal -= mTask.pontuacao
             it.atualizar()
-            mFormViewModel.removeTask(mTask)
+            mViewModel.removeTask(mTask)
         })
 
-        mFormViewModel.removeTask.observe(viewLifecycleOwner, {
+        mViewModel.removeTask.observe(viewLifecycleOwner, {
             if (it) {
                 mAdapter.attachListener(mListener)
                 val taskRef = ConfiguracaoFirebase.getFirebaseDatabase()
                     .child("tasks")
                     .child(identificador)
                     .child(TratarDatas.dataParaFirebase(binding.textData.text.toString()))
-                mFormViewModel.getList(taskRef)
+                mViewModel.getList(taskRef)
+                val intent = Intent(requireActivity(), MainActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+
                 ToastHelper.exibirToast(requireActivity(), "Removida com sucesso!")
             }
         })

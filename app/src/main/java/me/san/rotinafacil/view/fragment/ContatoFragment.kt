@@ -1,8 +1,8 @@
 package me.san.rotinafacil.view.fragment
 
-import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,13 +14,13 @@ import me.san.rotinafacil.listener.RecyclerViewListener
 import me.san.rotinafacil.model.UsuarioModel
 import me.san.rotinafacil.view.activity.ChatActivity
 import me.san.rotinafacil.view.adapter.ContatosAdapter
-import me.san.rotinafacil.viewmodel.fragment.ContatoViewModel
+import me.san.rotinafacil.viewmodel.activity.MainViewModel
 
 class ContatoFragment : Fragment() {
 
     private lateinit var binding: FragmentContatoBinding
     private val mAdapter = ContatosAdapter()
-    private lateinit var mFormViewModel: ContatoViewModel
+    private lateinit var mFormViewModel: MainViewModel
     private lateinit var mListener: RecyclerViewListener<UsuarioModel>
 
     override fun onCreateView(
@@ -28,13 +28,9 @@ class ContatoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentContatoBinding.inflate(layoutInflater)
-        mFormViewModel = ViewModelProvider(this).get(ContatoViewModel::class.java)
+        mFormViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         mListener = object : RecyclerViewListener<UsuarioModel> {
-
-            override fun onDeleteClick(model: UsuarioModel) {
-            }
-
             override fun onItemClick(model: UsuarioModel) {
                 val intent = Intent(requireActivity(), ChatActivity::class.java)
                 intent.putExtra("chatContato", model)
@@ -55,17 +51,17 @@ class ContatoFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         mAdapter.attachListener(mListener)
-        mFormViewModel.getList()
+        mFormViewModel.getListContatos()
     }
 
     override fun onPause() {
         super.onPause()
-        mFormViewModel.removeEvent()
+        mFormViewModel.removeEventContato()
     }
 
     override fun onStop() {
         super.onStop()
-        mFormViewModel.removeEvent()
+        mFormViewModel.removeEventContato()
     }
 
     private fun listeners() {
@@ -76,8 +72,10 @@ class ContatoFragment : Fragment() {
     }
 
     private fun observe() {
-        mFormViewModel.list.observe(viewLifecycleOwner, {
+        mFormViewModel.listUsuario.observe(viewLifecycleOwner, {
             mAdapter.updateList(it)
+            Log.d("lista", "passou por aqui?")
+            mFormViewModel.removeEventContato()
         })
     }
 

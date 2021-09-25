@@ -1,6 +1,7 @@
 package me.san.rotinafacil.view.adapter
 
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,6 +47,7 @@ class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.MyViewHolder>() {
     }
 
     override fun getItemCount(): Int {
+        Log.d("lista", mList.size.toString())
         return mList.size
     }
 
@@ -54,7 +56,7 @@ class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.MyViewHolder>() {
     }
 
     fun updateList (list: List<UsuarioModel>){
-        mList = list
         notifyDataSetChanged()
+        mList = list
     }
 }
