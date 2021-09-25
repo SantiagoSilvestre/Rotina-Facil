@@ -4,11 +4,15 @@ import android.net.Uri
 import android.util.Log
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import me.san.rotinafacil.model.UsuarioModel
-import me.san.rotinafacil.ui.Base64Custom
+import me.san.rotinafacil.helper.Base64Custom
 
 class UsuarioFirebase {
     companion object {
+        lateinit  var usuarioModel: UsuarioModel
         fun getIdentificadorUsuario(): String {
             val user = ConfiguracaoFirebase.getFirebaseAutenticacao()
             val email = user.currentUser?.email
@@ -20,26 +24,26 @@ class UsuarioFirebase {
             return user.currentUser!!
         }
 
-        fun atualizarFotoUsuario(url: Uri?) : Boolean {
-           try {
-               val user = getUsuarioAtual()
-               val profile = UserProfileChangeRequest
-                   .Builder()
-                   .setPhotoUri(url)
-                   .build()
-               user.updateProfile(profile).addOnCompleteListener {
-                   if (!it.isSuccessful) {
-                       Log.d("Perfil", "Erro ao atualizar perfil.")
-                   }
-               }
-               return true
-           } catch (e: Exception) {
-               e.printStackTrace()
-               return false
-           }
+        fun atualizarFotoUsuario(url: Uri?): Boolean {
+            try {
+                val user = getUsuarioAtual()
+                val profile = UserProfileChangeRequest
+                    .Builder()
+                    .setPhotoUri(url)
+                    .build()
+                user.updateProfile(profile).addOnCompleteListener {
+                    if (!it.isSuccessful) {
+                        Log.d("Perfil", "Erro ao atualizar perfil.")
+                    }
+                }
+                return true
+            } catch (e: Exception) {
+                e.printStackTrace()
+                return false
+            }
         }
 
-        fun atualizarNomeUsuario(nome: String) : Boolean {
+        fun atualizarNomeUsuario(nome: String): Boolean {
             try {
                 val user = getUsuarioAtual()
                 val profile = UserProfileChangeRequest
@@ -58,13 +62,13 @@ class UsuarioFirebase {
             }
         }
 
-        fun getDadosUsuarioLogado() : UsuarioModel {
+        fun getDadosUsuarioLogado(): UsuarioModel {
             val firebaseUser = getUsuarioAtual()
             val usuario = UsuarioModel()
             usuario.nome = firebaseUser.displayName!!
             usuario.email = firebaseUser.email!!
 
-            if (firebaseUser.photoUrl == null ) {
+            if (firebaseUser.photoUrl == null) {
                 usuario.foto = ""
             } else {
                 usuario.foto = firebaseUser.photoUrl.toString()
@@ -72,5 +76,6 @@ class UsuarioFirebase {
 
             return usuario
         }
+
     }
 }

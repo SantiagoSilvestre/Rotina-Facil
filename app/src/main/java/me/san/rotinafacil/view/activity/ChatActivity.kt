@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,12 +14,10 @@ import me.san.rotinafacil.databinding.ActivityChatBinding
 import me.san.rotinafacil.listener.RecyclerViewListener
 import me.san.rotinafacil.model.MensagemModel
 import me.san.rotinafacil.model.UsuarioModel
-import me.san.rotinafacil.ui.Constants
-import me.san.rotinafacil.ui.ToastHelper
-import me.san.rotinafacil.view.adapter.ContatosAdapter
+import me.san.rotinafacil.helper.Constants
+import me.san.rotinafacil.helper.ToastHelper
 import me.san.rotinafacil.view.adapter.MensagemAdapter
 import me.san.rotinafacil.viewmodel.activity.ChatViewModel
-import me.san.rotinafacil.viewmodel.fragment.ContatoViewModel
 
 class ChatActivity : AppCompatActivity() {
 

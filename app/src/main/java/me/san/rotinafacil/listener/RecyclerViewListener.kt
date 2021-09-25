@@ -7,6 +7,4 @@ interface RecyclerViewListener<T>  {
 
     fun onLongItemClick(model: T)
 
-    fun onDeleteClick(model: T)
-
 }

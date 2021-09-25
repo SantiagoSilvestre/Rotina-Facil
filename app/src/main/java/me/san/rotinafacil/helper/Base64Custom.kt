@@ -1,4 +1,4 @@
-package me.san.rotinafacil.ui
+package me.san.rotinafacil.helper
 
 import android.util.Base64
 

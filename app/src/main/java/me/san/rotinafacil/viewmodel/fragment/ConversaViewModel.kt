@@ -11,7 +11,6 @@ import me.san.rotinafacil.config.ConfiguracaoFirebase
 import me.san.rotinafacil.config.UsuarioFirebase
 import me.san.rotinafacil.listener.ValidationListener
 import me.san.rotinafacil.model.ConversaModel
-import me.san.rotinafacil.ui.Base64Custom
 
 class ConversaViewModel(application: Application) : AndroidViewModel(application) {
 

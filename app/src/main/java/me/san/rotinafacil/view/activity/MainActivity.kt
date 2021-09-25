@@ -10,9 +10,10 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import me.san.rotinafacil.R
 import me.san.rotinafacil.databinding.ActivityMainBinding
-import me.san.rotinafacil.ui.ToastHelper
+import me.san.rotinafacil.helper.ToastHelper
 import me.san.rotinafacil.view.fragment.ContatoFragment
 import me.san.rotinafacil.view.fragment.ConversaFragment
+import me.san.rotinafacil.view.fragment.TarefasFragment
 import me.san.rotinafacil.viewmodel.activity.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -51,14 +52,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun listeners() {
         val toolbar = binding.toolbar.toolbarPrincipal
-        toolbar.title = "Whatssap"
+        toolbar.title = getString(R.string.rotina)
         setSupportActionBar(toolbar)
 
         val adapter = FragmentPagerItemAdapter(
             supportFragmentManager,
             FragmentPagerItems.with(this)
-                .add("Conversas", ConversaFragment::class.java)
-                .add("Contatos", ContatoFragment::class.java)
+                .add("Tarefas", TarefasFragment::class.java)
+                .add("Rank", ContatoFragment::class.java)
                 .create()
         )
         val viewPager = binding.viewPager

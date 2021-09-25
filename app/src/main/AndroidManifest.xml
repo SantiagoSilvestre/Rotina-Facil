@@ -17,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RotinaFacil">
         <activity
+            android:name=".view.activity.TaskFormActivity"
+            android:parentActivityName=".view.activity.MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.activity.ChatActivity"
             android:exported="true"
             android:label="@string/title_activity_chat"

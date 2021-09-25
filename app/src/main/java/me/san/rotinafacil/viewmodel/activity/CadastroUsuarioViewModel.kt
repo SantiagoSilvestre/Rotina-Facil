@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import me.san.rotinafacil.config.ConfiguracaoFirebase
 import me.san.rotinafacil.listener.ValidationListener
 import me.san.rotinafacil.model.UsuarioModel
-import me.san.rotinafacil.ui.Base64Custom
+import me.san.rotinafacil.helper.Base64Custom
 import me.san.rotinafacil.config.UsuarioFirebase
 
 class CadastroUsuarioViewModel(application: Application) : AndroidViewModel(application) {

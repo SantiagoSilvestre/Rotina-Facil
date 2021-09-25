@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import me.san.rotinafacil.model.UsuarioModel
 import me.san.rotinafacil.databinding.ActivityCadastrarUserBinding
-import me.san.rotinafacil.ui.ToastHelper
-import me.san.rotinafacil.ui.ValidateFilds
+import me.san.rotinafacil.helper.ToastHelper
+import me.san.rotinafacil.helper.ValidateFilds
 import me.san.rotinafacil.viewmodel.activity.CadastroUsuarioViewModel
 
 class CadastrarUserActivity : AppCompatActivity() {
