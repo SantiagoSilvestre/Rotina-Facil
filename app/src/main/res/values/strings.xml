@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">RotinaFacil</string>
     <string name="text_email">E-mail</string>
+    <string name="text_pontuacao">Pontuação</string>
     <string name="text_senha">Senha</string>
     <string name="text_entrar">Entrar</string>
     <string name="text_cadastrese">Não tem conta? Cadastre-se</string>
@@ -53,4 +54,5 @@
     <string name="data">Data</string>
     <string name="save_task">Salvar Tarefa</string>
     <string name="completa">Completa</string>
+    <string name="_1">1</string>
 </resources>

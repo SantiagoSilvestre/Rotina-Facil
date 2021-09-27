@@ -1,7 +1,7 @@
 package me.san.rotinafacil.view.adapter
 
+import android.graphics.Color
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +22,8 @@ class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.MyViewHolder>() {
     inner class MyViewHolder(itemView: View, val listener: RecyclerViewListener<UsuarioModel>) : RecyclerView.ViewHolder(itemView) {
         val foto = itemView.findViewById<CircleImageView>(R.id.circle_img)
         val textName = itemView.findViewById<TextView>(R.id.text_title)
-        val textEmail = itemView.findViewById<TextView>(R.id.text_subtitulo)
+        val textPontuacao = itemView.findViewById<TextView>(R.id.text_subtitulo)
+        val textClassificacao = itemView.findViewById<TextView>(R.id.text_classificacao)
         val layoutItem = itemView.findViewById<LinearLayout>(R.id.layout_item)
     }
 
@@ -34,7 +35,10 @@ class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val usuario = mList[position]
         holder.textName.text = usuario.nome
-        holder.textEmail.text = usuario.email
+        holder.textPontuacao.text = "Pontuação: ${usuario.pontuacaoTotal}"
+        val classificacao = position+1
+        if (classificacao == 1) holder.textClassificacao.setTextColor(Color.parseColor("#075e54"))
+        holder.textClassificacao.text = "$classificacao º"
         if (usuario.foto != "") {
             val uri = Uri.parse(usuario.foto)
             Glide.with(holder.itemView.context).load(uri).into(holder.foto)
@@ -47,7 +51,6 @@ class ContatosAdapter: RecyclerView.Adapter<ContatosAdapter.MyViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        Log.d("lista", mList.size.toString())
         return mList.size
     }
 

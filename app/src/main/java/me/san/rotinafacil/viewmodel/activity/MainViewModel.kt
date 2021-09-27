@@ -1,11 +1,9 @@
 package me.san.rotinafacil.viewmodel.activity
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.auth.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -64,7 +62,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     listaContatos.add(usuario)
                 }
             }
-            Log.d("lista1", listaContatos.size.toString())
             mListUsuario.value = listaContatos.reversed()
         }
 

@@ -15,12 +15,14 @@ import me.san.rotinafacil.helper.Constants
 import me.san.rotinafacil.helper.Constants.CODES.PERMISSION_CODE
 import me.san.rotinafacil.helper.Permissao
 import me.san.rotinafacil.helper.ToastHelper
+import me.san.rotinafacil.model.UsuarioModel
 import me.san.rotinafacil.viewmodel.activity.ConfiguracoesViewModel
 
 class ConfiguracoesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityConfiguracoesBinding
     private lateinit var mConfiguracoesViewModel: ConfiguracoesViewModel
+    private lateinit var mUsuarioModel: UsuarioModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,8 @@ class ConfiguracoesActivity : AppCompatActivity() {
         setContentView(binding.root)
         mConfiguracoesViewModel = ViewModelProvider(this).get(ConfiguracoesViewModel::class.java)
         Permissao.validarPermissoes(this)
+
+        mConfiguracoesViewModel.getUser()
 
         listeners ()
         observe()
@@ -49,7 +53,7 @@ class ConfiguracoesActivity : AppCompatActivity() {
                 }
                 if (imagem != null ) {
                     binding.circleImgPerfil.setImageBitmap(imagem)
-                    mConfiguracoesViewModel.salvarImagem(imagem)
+                    mConfiguracoesViewModel.salvarImagem(imagem, mUsuarioModel)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -101,7 +105,7 @@ class ConfiguracoesActivity : AppCompatActivity() {
         }
 
         binding.imgAtualizarNome.setOnClickListener {
-            mConfiguracoesViewModel.atualizarNome(binding.editNome.text.toString())
+            mConfiguracoesViewModel.atualizarNome(binding.editNome.text.toString(), mUsuarioModel)
         }
 
     }
@@ -136,5 +140,10 @@ class ConfiguracoesActivity : AppCompatActivity() {
                 ToastHelper.exibirToast(this, "Foto atualizada")
             }
         })
+
+        mConfiguracoesViewModel.usuarioModel.observe(this, {
+            mUsuarioModel = it
+        })
+
     }
 }

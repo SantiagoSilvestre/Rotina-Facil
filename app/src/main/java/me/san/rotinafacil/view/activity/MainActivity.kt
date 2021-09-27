@@ -43,9 +43,6 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_configuracoes -> {
                 abrirConfiguracoes()
             }
-            R.id.menu_pesquisa -> {
-
-            }
         }
         return super.onOptionsItemSelected(item)
     }

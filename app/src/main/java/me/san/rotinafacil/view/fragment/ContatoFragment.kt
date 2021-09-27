@@ -9,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import me.san.rotinafacil.config.UsuarioFirebase
 import me.san.rotinafacil.databinding.FragmentContatoBinding
 import me.san.rotinafacil.listener.RecyclerViewListener
 import me.san.rotinafacil.model.UsuarioModel
 import me.san.rotinafacil.view.activity.ChatActivity
+import me.san.rotinafacil.view.activity.ConfiguracoesActivity
 import me.san.rotinafacil.view.adapter.ContatosAdapter
 import me.san.rotinafacil.viewmodel.activity.MainViewModel
 
@@ -32,9 +34,16 @@ class ContatoFragment : Fragment() {
 
         mListener = object : RecyclerViewListener<UsuarioModel> {
             override fun onItemClick(model: UsuarioModel) {
-                val intent = Intent(requireActivity(), ChatActivity::class.java)
-                intent.putExtra("chatContato", model)
-                startActivity(intent)
+                val userCurrent = UsuarioFirebase.getUsuarioAtual()
+                if (userCurrent.email.equals(model.email)) {
+                    val intent = Intent(requireActivity(), ConfiguracoesActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(requireActivity(), ChatActivity::class.java)
+                    intent.putExtra("chatContato", model)
+                    startActivity(intent)
+                }
+
             }
 
             override fun onLongItemClick(model: UsuarioModel) {
@@ -74,7 +83,6 @@ class ContatoFragment : Fragment() {
     private fun observe() {
         mFormViewModel.listUsuario.observe(viewLifecycleOwner, {
             mAdapter.updateList(it)
-            Log.d("lista", "passou por aqui?")
             mFormViewModel.removeEventContato()
         })
     }
