@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">RotinaFacil</string>
     <string name="text_email">E-mail</string>
+    <string name="text_pontuacao">Pontuação</string>
     <string name="text_senha">Senha</string>
     <string name="text_entrar">Entrar</string>
     <string name="text_cadastrese">Não tem conta? Cadastre-se</string>
@@ -10,4 +11,48 @@
     <string name="ja_tem_conta">Já tem conta? Entrar</string>
     <string name="nome">Nome</string>
     <string name="campo_invalido">Campo não preenchido!</string>
+    <string name="pesquisar">Pesquisar</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="sair">Sair</string>
+    <string name="permisson_denied">Permissão negada, para utilizar o App é necessário aceitar as permissões</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nome_usuario">Nome do usuário</string>
+    <string name="msg_alerta">Esse nome não é o de seu usuário nem sua senha. Esse nome ficará visivel para seus contatos!</string>
+    <string name="editar_nome_usuario">Editar nome de usuário</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="title_permissao_nega">Permissões negadas</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="escreva_sua_mensagem">escreva sua mensagem</string>
+    <string name="digite_sua_mensagem">Digite sua mensagem</string>
+    <string name="digite_uma_mensagem">Digite uma mensagem para enviar</string>
+    <string name="ultima_mensagam">Última mensagam</string>
+    <string name="rotina">Rotina Fácil</string>
+    <string name="tarefa">Tarefa</string>
+
+    <string name="label_created_task">Criar Tarefa</string>
+    <string name="label_task">Título</string>
+    <string name="label_desc">Descrição</string>
+    <string name="label_data">Data</string>
+    <string name="label_hour">Hora</string>
+    <string name="label_cancel">Cancelar</string>
+    <string name="label_tasks">Tarefas</string>
+    <string name="description_new_task">Nova Tarefa</string>
+    <string name="label_edit">Editar</string>
+    <string name="label_delete">Deletar</string>
+    <string name="label_dont_have_tasks">Ops! Você não possui \n nenhuma tarefa</string>
+    <string name="passadas">Passadas</string>
+    <string name="hoje">Hoje</string>
+    <string name="new_task">Botão nova tarefa</string>
+    <string name="data">Data</string>
+    <string name="save_task">Salvar Tarefa</string>
+    <string name="completa">Completa</string>
+    <string name="_1">1</string>
 </resources>
