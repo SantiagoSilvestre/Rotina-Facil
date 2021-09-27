@@ -8,15 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import me.san.rotinafacil.databinding.FragmentContatoBinding
 import me.san.rotinafacil.databinding.FragmentConversaBinding
 import me.san.rotinafacil.listener.RecyclerViewListener
 import me.san.rotinafacil.model.ConversaModel
-import me.san.rotinafacil.model.UsuarioModel
 import me.san.rotinafacil.view.activity.ChatActivity
-import me.san.rotinafacil.view.adapter.ContatosAdapter
 import me.san.rotinafacil.view.adapter.ConversasAdapter
-import me.san.rotinafacil.viewmodel.fragment.ContatoViewModel
 import me.san.rotinafacil.viewmodel.fragment.ConversaViewModel
 
 class ConversaFragment : Fragment() {
@@ -33,9 +29,6 @@ class ConversaFragment : Fragment() {
         mFormViewModel = ViewModelProvider(this).get(ConversaViewModel::class.java)
 
         mListener = object : RecyclerViewListener<ConversaModel> {
-
-            override fun onDeleteClick(model: ConversaModel) {
-            }
 
             override fun onItemClick(model: ConversaModel) {
                 val intent = Intent(requireActivity(), ChatActivity::class.java)

@@ -35,9 +35,6 @@ class ChatActivity : AppCompatActivity() {
         setContentView(binding.root)
         mListener = object : RecyclerViewListener<MensagemModel> {
 
-            override fun onDeleteClick(model: MensagemModel) {
-            }
-
             override fun onItemClick(model: MensagemModel) {
                 //val intent = Intent(applicationContext, ChatActivity::class.java)
                 //intent.putExtra("chatContato", model)

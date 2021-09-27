@@ -65,7 +65,7 @@ class TaskFormActivity : AppCompatActivity() {
                 binding.ratingBar.visibility = View.VISIBLE
                 binding.ratingBar.rating = mTask.pontuacao.toFloat()
             }
-
+            pontos = mTask.pontuacao
             pontosAretirar = mTask.pontuacao
         }
         //fim
@@ -85,7 +85,7 @@ class TaskFormActivity : AppCompatActivity() {
             var datePicker: DatePickerDialog?
             datePicker = DatePickerDialog(
                 this,
-                { view, year, monthOfYear, dayOfMonth ->
+                { _, year, monthOfYear, dayOfMonth ->
                     val newDate = Calendar.getInstance()
                     newDate[year, monthOfYear] = dayOfMonth
                     binding.editData.setText(DATE_FORMATE.format(newDate.time))

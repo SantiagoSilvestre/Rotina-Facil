@@ -19,6 +19,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        config {
+            keyAlias 'rotinaFacil'
+            keyPassword 'rotinaFacil'
+            //storeFile file('C:/keystores/kpmgmonitoramento2.jks')
+            storePassword 'rotinaFacil'
+        }
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false

@@ -14,10 +14,10 @@
         <entry key="app/src/main/res/layout/activity_cadastrar_user.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_configuracoes.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12182971014492754" />
         <entry key="app/src/main/res/layout/activity_task_form.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/adapter_contatos.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/adapter_contatos.xml" value="0.33" />
         <entry key="app/src/main/res/layout/adapter_conversa.xml" value="0.18" />
         <entry key="app/src/main/res/layout/adapter_mensagem_destinatario.xml" value="0.22" />
         <entry key="app/src/main/res/layout/adapter_mensagem_remetente.xml" value="0.12" />
