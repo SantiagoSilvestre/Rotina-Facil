@@ -29,12 +29,14 @@
         <activity
             android:name=".view.activity.ConfiguracoesActivity"
             android:exported="true"
+            android:theme="@style/Toolbar"
             android:parentActivityName=".view.activity.MainActivity" />
         <activity
             android:name=".view.activity.CadastrarUserActivity"
             android:exported="true" />
         <activity
             android:name=".view.activity.MainActivity"
+            android:theme="@style/Toolbar"
             android:exported="true" />
         <activity
             android:name=".view.activity.LoginActivity"
